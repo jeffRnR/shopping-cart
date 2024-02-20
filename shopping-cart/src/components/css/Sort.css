@@ -1,0 +1,31 @@
+.sort-container{
+    position: absolute;
+    height: auto;
+    max-height: fit-content;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    
+    top: 100%;
+    right: 10;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+.sort-option{
+    border-bottom: #333333 1px solid;
+    margin-bottom: 5px;
+    padding: 10px;
+    color: #333333;
+    opacity: 0.9;
+}
+.sort-option:last-child{
+    border-bottom: none;
+}
+.sort-option:hover{
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top: #f0f0f0 3px solid;
+    box-shadow: #333333 1px solid;
+    color: black;
+    opacity: 1;
+}

@@ -1,0 +1,119 @@
+.taskbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFC107;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    max-height: 40px;
+}
+.left{
+    flex: 1;
+}
+
+.center {
+    flex: 3;
+    display: flex;
+    align-items: center; /* Center items vertically */
+}
+
+.right {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; /* Center items vertically */
+    flex-direction: row;
+}
+
+.logo {
+    height: 50px;
+    padding-right: 10px;
+    width: 60px;
+    cursor: pointer;
+    overflow-y: hidden;
+}
+
+.searchField {
+    width: 50%;
+    padding: 8px;
+    border-radius: 5px;
+    height: 20px;
+    background-color: #f0f0f0;
+    margin-right: 0px;
+    border: none;
+    outline: none;
+}
+
+.searchIcon {
+    height: 20px;
+    margin-left: 5px;
+    padding: 5px;
+    background-color: #FFC107;
+    opacity: 1;
+    cursor: pointer;    
+}
+
+.searchIcon:hover {
+    opacity: 0.8;
+}
+
+.cart-icon{
+    height: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    padding: 5px;
+    background-color: #FFC107;
+}
+.profile-icon {
+    height: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+    padding: 5px;
+    background-color: #FFC107;
+}
+.sort-icon {
+    height: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    padding: 5px;
+    background-color: #FFC107;
+}
+
+
+.categories,
+.profile,
+.sort,
+.cart {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; 
+    cursor: pointer;
+    color: #333333;
+    opacity: 0.9;
+}
+.categories:hover{
+    color: black;
+    opacity: 1;
+}
+
+.cart:hover {
+    color: black;
+    opacity: 1;
+}
+.profile:hover{
+    color: black;
+    opacity: 1;
+}
+.sort:hover{
+    color: black;
+    opacity: 1;
+}
+
+.cartSpan {
+    margin-left: 5px;
+    text-align: center;
+}
+
+

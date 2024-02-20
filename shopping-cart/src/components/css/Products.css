@@ -1,0 +1,113 @@
+.productsContainer{
+    background-color: #f0f0f0;
+    width: 95%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    overflow-x: scroll; 
+    overflow-y: scroll;
+}
+.productsContainer::-webkit-scrollbar{
+    display: none;
+}
+
+.productsTitleContainer{
+    width: 100%;
+    justify-content: space-between;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 500;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: black;
+}
+
+.gridWrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+    justify-content: center; 
+    padding: 10px;
+    
+}
+
+.product {
+    display: flex;
+    flex-direction: column;    
+    background-color: rgb(33, 150, 243, 0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    height: 100%;
+}
+.product-link{
+    text-decoration: none;
+}
+.product:hover{
+    border-top: #f0f0f0 3px solid;
+}
+
+.productImage {
+    width: 90%;
+    height: 100%;
+    max-height: 250px;
+    border-radius: 10px;
+    object-fit: fill;
+    left: 0;
+    top: 0;
+    max-width: 200px;
+}
+
+.productTitle {
+    margin-top: 10px;
+    font-weight: 400;
+    text-overflow: ellipsis; 
+    white-space: inherit; 
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.productRating{
+    margin-top: 10px;
+    font-weight: 400;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.productPrice {
+    margin: 5px;
+    color: #000000;
+    font-weight: 700;    
+    position: relative;
+    bottom: 0;
+    right: 0;
+}
+
+.pagination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    align-items: center;
+    
+}
+
+.pagination button {
+    margin: 0 5px;
+    background-color:  rgb(33, 150, 243, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    color: #000000;
+}
+.pagination button:hover {
+    margin: 0 5px;
+    background-color:  rgb(33, 150, 243, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    color: #000000;
+}
+
+
