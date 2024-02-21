@@ -15,11 +15,13 @@ const SingleProduct = () => {
     const [successMessage, setSuccessMessage] = useState('');
 
     useEffect(() => {
+        if (!id) return;
         fetch(`https://fakestoreapi.com/products/${id}`)
             .then(response => response.json())
             .then(data => setProduct(data))
             .catch(error => console.error('Error fetching product:', error));
     }, [id]);
+    
 
     const handleQuantityChange = (e) => {
         setQuantity(e.target.value);
@@ -55,19 +57,25 @@ const SingleProduct = () => {
         setQuantity(1);
     };
 
-    const cart = {
-        productId: product.id,
-        productTitle:product.title,
-        productPrice: product.price,
-        quantity: quantity,
-    };
 
     const handleAddToCartClick = async () => {
         setShowDialog(true);
         try {
             axios
-                .post("/api/cart/add", cart);
-                .then((respnse))
+                .post("/api/cart/add")
+                .then((response) => {
+                    console.log(response.data);
+                    window.alert(
+                        "Items added to cart successfully"
+                    );
+                    setQuantity("");
+                })
+                .catch((error) => {
+                    window.alert(
+                        "Failed to addd product to cart"
+                    );
+                    console.log("error", error);
+                })
         } catch (err) {
             console.error('Error adding product to cart:', err);
         }
