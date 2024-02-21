@@ -1,4 +1,3 @@
-// ParentComponent.js
 import React, { useState } from "react";
 import TaskBar from "./TaskBar";
 import Products from "./Products";

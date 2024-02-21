@@ -16,14 +16,14 @@
 .center {
     flex: 3;
     display: flex;
-    align-items: center; /* Center items vertically */
+    align-items: center; 
 }
 
 .right {
     flex: 2;
     display: flex;
     justify-content: flex-end;
-    align-items: center; /* Center items vertically */
+    align-items: center;
     flex-direction: row;
 }
 

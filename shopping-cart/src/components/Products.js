@@ -20,7 +20,7 @@ const Products = ({ selectedCategory, selectedSortOption }) => {
                     filteredProducts = filteredProducts.filter(product => product.category === selectedCategory);
                 }
 
-                // Sorting logic based on selected sort option
+                
                 if (selectedSortOption === "Price low to high") {
                     filteredProducts.sort((a, b) => a.price - b.price);
                 } else if (selectedSortOption === "Price high to low") {
@@ -42,7 +42,7 @@ const Products = ({ selectedCategory, selectedSortOption }) => {
                 const gridWrapperHeight = gridWrapperRef.current.clientHeight;
                 const containerHeight = gridWrapperHeight + 50;
                 document.documentElement.style.setProperty('--products-container-height', `${containerHeight}px`);
-            }, 0); // Adjust debounce time as needed
+            }, 0);
         };
 
         window.addEventListener('resize', handleResize);

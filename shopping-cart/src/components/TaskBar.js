@@ -14,17 +14,17 @@ const TaskBar = ({ onSelectCategory, onSelectSortOption }) => {
 
     const toggleCategoriesDropdown = () => {
         setShowCategoriesDropdown(!showCategoriesDropdown);
-        setShowSortOptions(false); // Close the Sort component when opening CategoriesDropdown
+        setShowSortOptions(false);
     };
 
     const toggleSortOptions = () => {
         setShowSortOptions(!showSortOptions);
-        setShowCategoriesDropdown(false); // Close the CategoriesDropdown when opening Sort component
+        setShowCategoriesDropdown(false); 
     };
 
     const handleCategoryClick = (category) => {
         onSelectCategory(category);
-        setShowCategoriesDropdown(false); // Close the dropdown after selecting a category
+        setShowCategoriesDropdown(false); 
     };
 
     return (

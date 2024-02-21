@@ -2,10 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './css/SingleProduct.css';
 import TaskBar from './TaskBar';
+import axios from 'axios';
 
 const SingleProduct = () => {
     const [product, setProduct] = useState(null);
     const { id } = useParams();
+    const [showDialog, setShowDialog] = useState(false);
+    const [quantity, setQuantity] = useState(1);
+    const [selectedLocation, setSelectedLocation] = useState('Nairobi');
+    const [comment, setComment] = useState('');
+    const [comments, setComments] = useState([]);
+    const [successMessage, setSuccessMessage] = useState('');
 
     useEffect(() => {
         fetch(`https://fakestoreapi.com/products/${id}`)
@@ -13,11 +20,6 @@ const SingleProduct = () => {
             .then(data => setProduct(data))
             .catch(error => console.error('Error fetching product:', error));
     }, [id]);
-    const [showDialog, setShowDialog] = useState(false);
-    const [quantity, setQuantity] = useState(1);
-    const [selectedLocation, setSelectedLocation] = useState('Nairobi');
-    const [comment, setComment] = useState('');
-    const [comments, setComments] = useState([]);
 
     const handleQuantityChange = (e) => {
         setQuantity(e.target.value);
@@ -49,41 +51,33 @@ const SingleProduct = () => {
     };
 
     const handleConfirmQuantity = () => {
-        // Here, you can handle adding the selected quantity to the cart
         setShowDialog(false);
-        // Reset quantity state for next use
         setQuantity(1);
+    };
+
+    const cart = {
+        productId: product.id,
+        productTitle:product.title,
+        productPrice: product.price,
+        quantity: quantity,
     };
 
     const handleAddToCartClick = async () => {
         setShowDialog(true);
         try {
-            const response = await fetch('/api/cart/add', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ productId: product.id, productTitle: product.title, productPrice: product.price, quantity: 1 }), // Assuming quantity is fixed for now
-            });
-            if (response.ok) {
-                console.log('Product added to cart');
-                // Handle success
-            } else {
-                console.error('Failed to add product to cart');
-                // Handle failure
-            }
+            axios
+                .post("/api/cart/add", cart);
+                .then((respnse))
         } catch (err) {
             console.error('Error adding product to cart:', err);
-            // Handle network error
-            // For example, you can show an error message to the user
         }
     };
+
     
     if (!product) return <div>Loading ...</div>;
-    <TaskBar />
-    return (
-        
+    return (        
         <div className='singleProduct'>
+            {successMessage && <div className="successMessage">{successMessage}</div>}
             <div className='singleProduct-center'>
                 <div className='image'>
                     <img src={product.image} alt={product.title} className='productImage'/>

@@ -20,7 +20,7 @@ const CategoriesDropdown = ({ onSelectCategory }) => {
 
     return (
         <div className="categories-dropdown">
-            {/* Render each category */}
+            
             {categories.map((category, index) => (
                 <span key={index} className="categories-item" onClick={() => handleCategoryClick(category)}>
                     {category}
