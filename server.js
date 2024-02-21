@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = process.env.PORT || 5000; 
+const PORT = process.env.PORT || 3000; 
 
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://jeffmunyigi:RNRvinalo12!@cluster0.ubiibtd.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -11,7 +11,7 @@ mongoose.connect('mongodb+srv://jeffmunyigi:RNRvinalo12!@cluster0.ubiibtd.mongod
     .catch(err => console.error('Error connecting to MongoDB:', err));
 
 const cartItemSchema = new mongoose.Schema({
-    productID: String,
+    productId: String,
     productTitle: String,
     productPrice: String,
     quantity: Number
@@ -25,9 +25,9 @@ app.use(bodyParser.json());
 
 app.post('/api/cart/add', async (req, res) => {
     try {
-        const { productID, productTitle, productPrice, quantity } = req.body;
+        const { productId, productTitle, productPrice, quantity } = req.body;
         
-        const newItem = new CartItem({ productID, productTitle, productPrice, quantity });
+        const newItem = new CartItem({ productId, productTitle, productPrice, quantity });
         
         await newItem.save();
         res.status(200).json(newItem);

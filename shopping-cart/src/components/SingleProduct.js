@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './css/SingleProduct.css';
-import TaskBar from './TaskBar';
+//import TaskBar from './TaskBar';
 import axios from 'axios';
 
 const SingleProduct = () => {
@@ -57,25 +57,28 @@ const SingleProduct = () => {
         setQuantity(1);
     };
 
+    
 
     const handleAddToCartClick = async () => {
         setShowDialog(true);
         try {
-            axios
-                .post("/api/cart/add")
-                .then((response) => {
-                    console.log(response.data);
-                    window.alert(
-                        "Items added to cart successfully"
-                    );
-                    setQuantity("");
-                })
-                .catch((error) => {
-                    window.alert(
-                        "Failed to addd product to cart"
-                    );
-                    console.log("error", error);
-                })
+
+            const cartItem = {
+                productId: product.id,
+                productTitle: product.title,
+                productPrice: product.price,
+                quantity: quantity
+            };
+
+            const response = await axios.post("/api/cart/add", cartItem);
+
+            if (response.status === 200) {
+                console.log(response.data);
+                window.alert("Item added to cart successfully!");
+                setQuantity('');
+            } else {
+                window.alert("Failed to add product to cart");
+            }
         } catch (err) {
             console.error('Error adding product to cart:', err);
         }
