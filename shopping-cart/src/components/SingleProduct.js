@@ -70,7 +70,7 @@ const SingleProduct = () => {
                 quantity: quantity
             };
 
-            const response = await axios.post("/api/cart/add", cartItem);
+            const response = await axios.post("http://localhost:5000/api/cart/add", cartItem);
 
             if (response.status === 200) {
                 console.log(response.data);
